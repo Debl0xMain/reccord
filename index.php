@@ -9,7 +9,6 @@
 </head>
 <body>
     <header>
-        tye
         <?php include "./src/php/requestsql/connect.php";
         ?>
         <?php
