@@ -1,15 +1,4 @@
 <?php
-    //selectione de la ligne
-    include("/home/antoine/Bureau/FormatioAfpa/reccord/src/php/requestsql/connect.php");
-    $db = ConnexionBase();
-    $requete = $db->prepare("SELECT *
-    FROM disc
-    join artist 
-    on disc.artist_id = artist.artist_id 
-    WHERE disc.disc_id=:iddisque");
-    $requete->bindValue(":iddisque", $_POST["iddisque"], PDO::PARAM_STR);
-    $myArtist2 = $requete->fetch(PDO::FETCH_OBJ);
-    $requete->closeCursor();
 
     //verif des imput
 
@@ -46,26 +35,26 @@
         $label = Null;
         $price = Null;}
 
-        var_dump($_POST);
+        //var_dump($_POST);
 
     if ($title = Null || $artist = Null || $year = Null || $genre = Null || $label = Null || $price = Null) {
         header("Location: modaledit.php");
         exit;
     }
 
-    //Gestion Image
+    //Gestion Image 
+    if ($picture != NULL) {
 
-    $aMimeTypes = array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
-
-    $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $mimetype = finfo_file($finfo, $_FILES["picture"]["tmp_name"]);
-    finfo_close($finfo);
+        $aMimeTypes = array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimetype = finfo_file($finfo, $_FILES["picture"]["tmp_name"]);
+        finfo_close($finfo);
 
     if ($_FILES["fichier"]["error"]=0) {
 
         if (in_array($mimetype, $aMimeTypes))
         {
-            move_uploaded_file($_FILES["picture"]["tmp_name"], "./src/img/".$title.".jpg");
+            move_iddisqueuploaded_file($_FILES["picture"]["tmp_name"], "./src/img/".$title.".jpg");
 
         }
 
@@ -75,22 +64,27 @@
             exit;
         }
     }
+}
+
 
     //envoi de la modif
     try {
+            //selectione de la ligne
+        include("/home/antoine/Bureau/FormatioAfpa/reccord/src/php/requestsql/connect.php");
         $db = connexionBase();
         $requete = $db->prepare("UPDATE disc
-                                SET disc_price = :disc_price,
-                                disc_year = :disc_year,
-                                disc_genre = :disc_year,
-                                disc_label = :disc_label,
-                                disc_picture = :disc_picture,
-                                disc_title = :disc_title
+                                JOIN artist ON disc.artist_id = artist.artist_id
+                                SET disc.disc_price = :disc_price,
+                                disc.disc_year = :disc_year,
+                                disc.disc_genre = :disc_year,
+                                disc.disc_label = :disc_label,
+                                disc.disc_picture = :disc_picture,
+                                disc.disc_title = :disc_title,
+                                artist.artist_name = :artist_name
                                 WHERE disc_id = :disc_id;");
 
 
         $requete->bindValue(":disc_id", $iddisque, PDO::PARAM_INT);
-
         $requete->bindValue(":artist_name", $artist, PDO::PARAM_STR);
         $requete->bindValue(":disc_price", $price, PDO::PARAM_STR);
         $requete->bindValue(":disc_year", $year, PDO::PARAM_INT);
@@ -107,11 +101,12 @@
     // a faire
     catch (Exception $e) {
         echo "Erreur : " . $requete->errorInfo()[2] . "<br>";
-        die("Fin du script (modaledit.php)");
+        var_dump($_POST);
+        die("Fin du script (Non envoyer)");
     }
 
-    // Si OK: redirection vers l'index
-    header("Location: index.php");
+    // si valeur envoye redirection vers l'index
+    header("Location:index.php");
     exit;
 
 
