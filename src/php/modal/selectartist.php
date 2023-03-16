@@ -1,6 +1,7 @@
 
 <?php
 
+    $db = connexionBase();
 
     $requete = $db->query("
         SELECT *

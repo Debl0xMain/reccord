@@ -1,13 +1,14 @@
 <?php
     //selectione de la ligne
-
+    include("/home/antoine/Bureau/FormatioAfpa/reccord/src/php/requestsql/connect.php");
+    $db = ConnexionBase();
     $requete = $db->prepare("SELECT *
     FROM disc
     join artist 
     on disc.artist_id = artist.artist_id 
-    WHERE disc.disc_id=?");
-    $requete->execute(array($_POST["iddisque"]));
-    $myArtist = $requete->fetch(PDO::FETCH_OBJ);
+    WHERE disc.disc_id=:iddisque");
+    $requete->bindValue(":iddisque", $_POST["iddisque"], PDO::PARAM_STR);
+    $myArtist2 = $requete->fetch(PDO::FETCH_OBJ);
     $requete->closeCursor();
 
     //verif des imput
@@ -34,10 +35,6 @@
 
     if (isset($_POST['price']) && $_POST['price'] != "") {
         $price = $_POST['price'];
-    }
-
-    if (isset($_POST['iddisque']) && $_POST['iddisque'] != "") {
-        $iddisque = $_POST['iddisque'];
     }
 
     //si valeur null = envoi echec
@@ -81,7 +78,7 @@
 
     //envoi de la modif
     try {
-
+        $db = connexionBase();
         $requete = $db->prepare("UPDATE disc
                                 SET disc_price = :disc_price,
                                 disc_year = :disc_year,

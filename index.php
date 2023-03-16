@@ -9,8 +9,7 @@
 </head>
 <body>
     <header>
-        <?php include "./src/php/requestsql/connect.php";
-        ?>
+
         <?php
         include("./src/php/header.php");
         ?>
@@ -24,7 +23,7 @@
                 ?>                
     </div>
 
-<!-- ajoute 
+
 
 <div class="modal fade" id="add1" tabindex="-1" aria-labelledby="add1" aria-hidden="true">
     <div class="modal-dialog">
@@ -34,6 +33,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body container">
+            <form action="">
         
             <div class="row">
                 <div class="col">
@@ -75,12 +75,13 @@
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">Save</button>
         </div>
+        </form>
     </div>
     </div>
 </div>
-</div> -->
+</div>
     <!-- Script JS -->
     <section>
        

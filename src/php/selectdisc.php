@@ -1,5 +1,8 @@
 <?php
 
+
+$db = connexionBase();
+
 $requete = $db->query("
     SELECT *
     FROM disc

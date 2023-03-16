@@ -1,5 +1,8 @@
 <?php
 
+include("/home/antoine/Bureau/FormatioAfpa/reccord/src/php/requestsql/connect.php");
+$db = connexionBase();
+
 $requete = $db->query("
     SELECT *
     FROM disc
