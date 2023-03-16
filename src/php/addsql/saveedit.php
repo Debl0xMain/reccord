@@ -2,48 +2,57 @@
 
     //verif des imput
 
+    if (isset($_POST['iddisque']) && $_POST['iddisque'] != "") {
+        $iddisque = $_POST['iddisque'];
+    }
+    else ($iddisque = NULL);
+
     if (isset($_POST['title']) && $_POST['title'] != "") {
         $title = $_POST['title'];
     }
+    else ($title = NULL);
 
     if (isset($_POST['artist']) && $_POST['artist'] != "") {
         $artist = $_POST['artist'];
     }
+    else ($artist = NULL);
 
     if (isset($_POST['year']) && $_POST['year'] != "") {
         $year = $_POST['year'];
     }
+    else ($year = NULL);
 
     if (isset($_POST['genre']) && $_POST['genre'] != "") {
         $genre = $_POST['genre'];
     }
+    else ($genre = NULL);
 
     if (isset($_POST['label']) && $_POST['label'] != "") {
         $label = $_POST['label'];
     }
+    else ($label = NULL);
 
     if (isset($_POST['price']) && $_POST['price'] != "") {
         $price = $_POST['price'];
     }
+    else ($price = NULL);
 
     //si valeur null = envoi echec
-    else {
-        $title = Null;
-        $artist = Null;
-        $year = Null;
-        $genre = Null;
-        $label = Null;
-        $price = Null;}
+   
+        var_dump($_POST);
+        var_dump($price,$title,$genre);
+    
 
-        //var_dump($_POST);
-
-    if ($title = Null || $artist = Null || $year = Null || $genre = Null || $label = Null || $price = Null) {
-        header("Location: modaledit.php");
+    if ($title == Null || $artist == Null || $year == Null || $genre == Null || $label == Null || $price == Null) {
+        //header("Location: modaledit.php");
+        echo "erreur";
         exit;
     }
 
     //Gestion Image 
-    if ($picture != NULL) {
+    if ($_POST['picture'] != NULL) {
+
+        $picture = $_POST['picture'];
 
         $aMimeTypes = array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -54,7 +63,7 @@
 
         if (in_array($mimetype, $aMimeTypes))
         {
-            move_iddisqueuploaded_file($_FILES["picture"]["tmp_name"], "./src/img/".$title.".jpg");
+            move_iddisqueuploaded_file($_FILES["picture"]["tmp_name"], "../../../src/img/".$title.".jpg");
 
         }
 
@@ -66,12 +75,11 @@
     }
 }
 
-
+    //connect
+    include("../../../src/php/requestsql/connect.php");
+    $db = connexionBase();
     //envoi de la modif
     try {
-            //selectione de la ligne
-        include("/home/antoine/Bureau/FormatioAfpa/reccord/src/php/requestsql/connect.php");
-        $db = connexionBase();
         $requete = $db->prepare("UPDATE disc
                                 JOIN artist ON disc.artist_id = artist.artist_id
                                 SET disc.disc_price = :disc_price,
@@ -81,7 +89,7 @@
                                 disc.disc_picture = :disc_picture,
                                 disc.disc_title = :disc_title,
                                 artist.artist_name = :artist_name
-                                WHERE disc_id = :disc_id;");
+                                WHERE disc_id = :disc_id");
 
 
         $requete->bindValue(":disc_id", $iddisque, PDO::PARAM_INT);
@@ -106,7 +114,7 @@
     }
 
     // si valeur envoye redirection vers l'index
-    header("Location:index.php");
+    //header("Location:/index.php");
     exit;
 
 

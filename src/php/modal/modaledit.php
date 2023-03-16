@@ -8,7 +8,7 @@ echo '<div class="modal fade" id="modif'. $nbralbum.'" tabindex="-1" aria-labell
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body container">
-    <form action ="src/php/addsql/saveedit.php" method="post" enctype="multipart/form-data">
+    <form action ="../../../src/php/addsql/saveedit.php" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col">
                 <p class="mb-0">title</p>
