@@ -7,6 +7,11 @@
     }
     else ($iddisque = NULL);
 
+    if (isset($_POST['pochalbum']) && $_POST['pochalbum'] != "") {
+        $pochalbum = $_POST['pochalbum'];
+    }
+    else ($pochalbum = NULL);
+
     if (isset($_POST['title']) && $_POST['title'] != "") {
         $title = $_POST['title'];
     }
@@ -43,7 +48,7 @@
         var_dump($price,$title,$genre);
     
 
-    if ($title == Null || $artist == Null || $year == Null || $genre == Null || $label == Null || $price == Null) {
+    if ($title == Null || $artist == Null || $year == Null || $genre == Null || $label == Null || $price == Null || $pochalbum == NULL) {
         //header("Location: modaledit.php");
         echo "erreur";
         exit;
@@ -59,21 +64,25 @@
         $mimetype = finfo_file($finfo, $_FILES["picture"]["tmp_name"]);
         finfo_close($finfo);
 
-    if ($_FILES["fichier"]["error"]=0) {
+        if ($_FILES["fichier"]["error"]=0) {
 
-        if (in_array($mimetype, $aMimeTypes))
-        {
-            move_iddisqueuploaded_file($_FILES["picture"]["tmp_name"], "../../../src/img/".$title.".jpg");
+            if (in_array($mimetype, $aMimeTypes))
+            {
+                move_iddisqueuploaded_file($_FILES["picture"]["tmp_name"], "/src/img/".$pochalbum.".jpg");
 
         }
 
-        else 
-        {
-            echo "Type de fichier non autorisé";    
-            exit;
+            else 
+            {
+                echo "Type de fichier non autorisé";    
+                exit;
+            }
         }
     }
-}
+    else {
+        $picture = $pochalbum;
+    }
+
 
     //connect
     include("../../../src/php/requestsql/connect.php");

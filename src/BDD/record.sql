@@ -52,9 +52,6 @@ INSERT INTO disc (disc_id, disc_title, disc_year, disc_picture, disc_label, disc
 	(13, 'London Calling', 1971, 'London Calling.jpeg', 'CBS', 'Punk, New Wave', 33.00, 10),
 	(14, 'Beggars Banquet', 1968, 'Beggars Banquet.jpeg', 'Rolling Stones Records', 'Blues Rock, Classic Rock', 33.00, 1),
 	(15, 'Laboratory of sound', 1995, 'Laboratory of sound.jpeg', 'Rebel Rec.', 'Rock', 33.00, 9);
-;
-    SELECT *
-    FROM disc
-    join artist on disc.artist_id = artist.artist_id
+
 
 

@@ -44,11 +44,12 @@ echo '<div class="modal fade" id="modif'. $nbralbum.'" tabindex="-1" aria-labell
             <div class="row">
                 <div class="col">
                     <p class="mb-0">Picture</p>
-                    <img src="./src/img/'.$pochalbum.'" alt="" height="255px" width="255px">
+                    <img src="./src/img/'.$pochalbum.'" alt="'.$album.'" height="255px" width="255px">
                     <input type="file" name="picture"> 
                 </div>
             </div>
-        <input type="text" name="iddisque" value="'.$nbralbum.'">
+        <input type="hidden" name="iddisque" value="'.$nbralbum.'">
+        <input type="hidden" value="'.$pochalbum.'"name="pochalbum">
     </div>
     <div class="modal-footer">'.
     "
