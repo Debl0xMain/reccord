@@ -2,8 +2,8 @@
 
     //verif des imput
 
-    if (isset($_POST['iddisque']) && $_POST['iddisque'] != "") {
-        $iddisque = $_POST['iddisque'];
+    if (isset($_POST['clefinto']) && $_POST['clefinto'] != "") {
+        $iddisque = $_POST['clefinto'];
     }
     else ($iddisque = NULL);
 
@@ -43,11 +43,12 @@
     else ($price = NULL);
 
     //si valeur null = envoi echec
+    
 
-    if ($title == Null || $artist == Null || $year == Null || $genre == Null || $label == Null || $price == Null || $pochalbum == NULL) {
+    if ($title == Null || $artist == Null || $year == Null || $genre == Null || $label == Null || $price == Null ) {
         //header("Location: modaledit.php");
+        echo "titre : ". $title ." /:/ artiste ". $artist ." /:/ year ". $year." /:/ genre ". $genre ." /:/ label ". $label ." /:/ prix". $price." /:/ pochette album ". $pochalbum;
         echo "erreur";
-        echo  " " . $iddisque ." " . $pochalbum . " " . $title ." artiste : " . $artist ." " . $year ." " . $genre ." " . $label ." " . $price;
         exit;
     }
 
@@ -59,7 +60,7 @@
         $mimetype = finfo_file($finfo, $_FILES["picture"]["tmp_name"]);
         finfo_close($finfo);
 
-        if ($_FILES["fichier"]["error"]=0) {
+        if ($_FILES["picture"]["error"]=0) {
 
             if (in_array($mimetype, $aMimeTypes))
             {
@@ -74,6 +75,7 @@
             }
         }
     }
+
     else {
         $picture = $pochalbum;
     }
@@ -84,19 +86,11 @@
     $db = connexionBase();
     //envoi de la modif
     try {
-        $requete = $db->prepare("UPDATE disc
-                                JOIN artist ON disc.artist_id = artist.artist_id
-                                SET disc.disc_price = :disc_price,
-                                disc.disc_year = :disc_year,
-                                disc.disc_genre = :disc_genre,
-                                disc.disc_label = :disc_label,
-                                disc.disc_picture = :disc_picture,
-                                disc.disc_title = :disc_title,
-                                artist.artist_name = :artist_name
-                                WHERE disc_id = :disc_id");
+        $requete = $db->prepare("INSERT INTO disc (disc_id, disc_title, disc_year, disc_picture, disc_label, disc_genre, disc_price, artist_id)
+        VALUES (:clefinto, :disc_title, :disc_year, :disc_picture, :disc_label, :disc_genre, :disc_price, :artist_name);");
 
 
-        $requete->bindValue(":disc_id", $iddisque, PDO::PARAM_INT);
+        $requete->bindValue(":clefinto", $clefinto, PDO::PARAM_INT);
         $requete->bindValue(":artist_name", $artist, PDO::PARAM_STR);
         $requete->bindValue(":disc_price", $price, PDO::PARAM_STR);
         $requete->bindValue(":disc_year", $year, PDO::PARAM_INT);
@@ -112,8 +106,8 @@
 
     // a faire
     catch (Exception $e) {
+        echo "titre : ". $title ." /:/ artiste ". $artist ." /:/ year ". $year." /:/ genre ". $genre ." /:/ label ". $label ." /:/ prix". $price." /:/ pochette album = ". $pochalbum . "<br>";
         echo "Erreur : " . $requete->errorInfo()[2] . "<br>";
-        var_dump($_POST);
         die("Fin du script (Non envoyer)");
     }
 

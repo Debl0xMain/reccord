@@ -57,7 +57,10 @@ echo '<div class="modal fade" id="modif'. $nbralbum.'" tabindex="-1" aria-labell
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
     <button type="submit" name="Save" class="btn btn-primary" value="Save" data-target="#testphp">Save</button>
     </form>
+    <form action ="../../../src/php/addsql/savedelete.php" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="iddisque" value="'.$nbralbum.'">
     <button type="submit" name="Delete" class="btn btn-danger" value="Delete">Delete</button>
+    </form>
     </div>
 </div>
 </div>

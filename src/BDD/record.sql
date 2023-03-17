@@ -55,3 +55,8 @@ INSERT INTO disc (disc_id, disc_title, disc_year, disc_picture, disc_label, disc
 
 
 
+INTO disc 
+        (disc.disc_price, disc.disc_year, disc.disc_genre, disc.disc_label, disc.disc_picture, disc.disc_title, artist.artist_id)
+                                VALUES 
+                                ('Laboratory of sound', 1995, 'Laboratory of sound.jpeg', 'Rebel Rec.', 'Rock', 33.00, 9)
+                                JOIN artist ON disc.artist_id = artist.artist_id

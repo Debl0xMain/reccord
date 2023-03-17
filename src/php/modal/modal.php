@@ -50,7 +50,7 @@ echo ' <div class="modal fade" id="detail'.$nbralbum.'" tabindex="-1" aria-label
     <div class="modal-footer">
 
 
-    <input type="text" name="iddisque" value="'.$nbralbum.'">
+    <input type="hidden" name="iddisque" value="'.$nbralbum.'">
     
 
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

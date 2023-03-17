@@ -31,7 +31,7 @@ do {
 
 
 
-    echo '<option value="'.$name_artist.'"';
+    echo '<option value="'.$id_artist.'"';
     if ($name_artist == $arstistename ){
         echo ' selected';
     }
