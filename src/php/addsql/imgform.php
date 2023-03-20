@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(file_exists("../../../src/img/" . $_FILES["picture"]["name"])){
                 echo $_FILES["picture"]["name"] . " existe déjà.";
             } else{
-                move_uploaded_file($_FILES["picture"]["tmp_name"], "../../../src/img/" . $_FILES["picture"]["name"]);
+                move_uploaded_file($_FILES["picture"]["tmp_name"], "../../../src/img/" . $imgupload);
                 echo "Votre fichier a été téléchargé avec succès.";
             } 
         } else{
