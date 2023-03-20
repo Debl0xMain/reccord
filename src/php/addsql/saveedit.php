@@ -54,7 +54,7 @@
     //Gestion Image
 
     $imgupload = $title.".jpeg"; // definition du nom dans la BDD
-    //include("imgform.php");
+    include("imgform.php");
 
     //connect
     include("../../../src/php/requestsql/connect.php");
@@ -95,7 +95,7 @@
     }
 
     // si valeur envoye redirection vers l'index
-    header("Location:/index.php");
+    //header("Location:/index.php");
     exit;
 
 
