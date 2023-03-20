@@ -19,17 +19,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Vérifie le type MIME du fichier
         if(in_array($filetype, $allowed)){
-            // Vérifie si le fichier existe avant de le télécharger.
-            if(file_exists("../../../src/img/" . $_FILES["picture"]["name"])){
-                echo $_FILES["picture"]["name"] . " existe déjà.";
-            } else{
+            // add and you files
                 move_uploaded_file($_FILES["picture"]["tmp_name"], "../../../src/img/" . $imgupload);
                 echo "Votre fichier a été téléchargé avec succès.";
-            } 
-        } else{
+        } 
+        else{
             echo "Error: Il y a eu un problème de téléchargement de votre fichier. Veuillez réessayer."; 
         }
-    } else{
+    } 
+    else{
         echo "Error: " . $_FILES["picture"]["error"];
     }
 }

@@ -95,7 +95,7 @@
     }
 
     // si valeur envoye redirection vers l'index
-    //header("Location:/index.php");
+    header("Location:/index.php");
     exit;
 
 
