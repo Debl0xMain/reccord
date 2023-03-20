@@ -4,7 +4,7 @@ echo
 '<div class="col my-2 order-'.$nbralbum.'">
     <div class="row">
         <div class="col">
-            <img class="col" src="/src/img/'."$pochalbum".'" alt="'.$album.'" height="255px">
+            <img class="col" src="/src/img/'."$pochalbum".'" alt="'.$album.'" height="255px" width="255px">
         </div>
         <div class="col">
             <p class="row my-2">'.$album .'</p>
