@@ -1,7 +1,14 @@
 <?php
 
-
 $db = connexionBase();
+
+$requete = $db->query("SELECT COUNT(*) AS maxint FROM disc");
+$counttable = $requete->fetchAll(PDO::FETCH_OBJ);
+$requete->closeCursor();
+foreach ($counttable as $disc):
+
+$nbralbummax = $disc->maxint;
+endforeach;
 
 $requete = $db->query("
     SELECT *
@@ -10,11 +17,11 @@ $requete = $db->query("
     LIMIT 0, 1");
 $tableau = $requete->fetchAll(PDO::FETCH_OBJ);
 $requete->closeCursor();
-
-foreach ($tableau as $disc);
+foreach ($tableau as $disc):
+endforeach;
 $selectalbum = 0;
-$nbralbummax = $disc->disc_id;
 $row = 0;
+
 
 do {
 
@@ -70,6 +77,5 @@ if ($nbralbummax%2 == 1) {
         echo '<div class="col">'.'</div>';
     }
 }
-
 
 ?>

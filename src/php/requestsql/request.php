@@ -11,7 +11,8 @@ $requete = $db->query("
 $tableau = $requete->fetchAll(PDO::FETCH_OBJ);
 $requete->closeCursor();
 
-foreach ($tableau as $disc);
+foreach ($tableau as $disc):
+endforeach;
 $selectalbum = 0;
 $nbralbummax = $disc->disc_id;
 
