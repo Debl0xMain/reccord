@@ -2,15 +2,11 @@
 
     //verif des imput
 
-    if (isset($_POST['clefinto']) && $_POST['clefinto'] != "") {
-        $iddisque = $_POST['clefinto'];
+    if (isset($_POST['idadd']) && $_POST['idadd'] != "") {
+        $iddisqueadd = $_POST['idadd'];
+        $clefintoadd = $iddisqueadd+1;
     }
     else ($iddisque = NULL);
-
-    if (isset($_POST['pochalbum']) && $_POST['pochalbum'] != "") {
-        $pochalbum = $_POST['pochalbum'];
-    }
-    else ($pochalbum = NULL);
 
     if (isset($_POST['title']) && $_POST['title'] != "") {
         $title = $_POST['title'];
@@ -46,40 +42,15 @@
     
 
     if ($title == Null || $artist == Null || $year == Null || $genre == Null || $label == Null || $price == Null ) {
-        //header("Location: modaledit.php");
-        echo "titre : ". $title ." /:/ artiste ". $artist ." /:/ year ". $year." /:/ genre ". $genre ." /:/ label ". $label ." /:/ prix". $price." /:/ pochette album ". $pochalbum;
-        echo "erreur";
+        echo "erreur variable";
+        echo $title." = titre <br>".$artist." = artiste <br>".$year." = date <br>".$genre." = genre <br>".$label." = label <br>".$price." = prix <br>";
         exit;
     }
 
     //Gestion Image 
-    if ($_POST['picture'] != NULL) {
 
-        $aMimeTypes = array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
-        $finfo = finfo_open(FILEINFO_MIME_TYPE);
-        $mimetype = finfo_file($finfo, $_FILES["picture"]["tmp_name"]);
-        finfo_close($finfo);
-
-        if ($_FILES["picture"]["error"]=0) {
-
-            if (in_array($mimetype, $aMimeTypes))
-            {
-                move_iddisqueuploaded_file($_FILES["picture"]["tmp_name"], "/src/img/".$pochalbum);
-
-        }
-
-            else 
-            {
-                echo "Type de fichier non autorisé";    
-                exit;
-            }
-        }
-    }
-
-    else {
-        $picture = $pochalbum;
-    }
-
+    $imgupload = $title.".jpeg"; // definition du nom dans la BDD
+    //include("imgform.php"); 
 
     //connect
     include("../../../src/php/requestsql/connect.php");
@@ -90,13 +61,13 @@
         VALUES (:clefinto, :disc_title, :disc_year, :disc_picture, :disc_label, :disc_genre, :disc_price, :artist_name);");
 
 
-        $requete->bindValue(":clefinto", $clefinto, PDO::PARAM_INT);
+        $requete->bindValue(":clefinto", $clefintoadd, PDO::PARAM_INT);
         $requete->bindValue(":artist_name", $artist, PDO::PARAM_STR);
         $requete->bindValue(":disc_price", $price, PDO::PARAM_STR);
         $requete->bindValue(":disc_year", $year, PDO::PARAM_INT);
         $requete->bindValue(":disc_genre", $genre, PDO::PARAM_STR);
         $requete->bindValue(":disc_label", $label, PDO::PARAM_STR); 
-        $requete->bindValue(":disc_picture", $picture, PDO::PARAM_STR);
+        $requete->bindValue(":disc_picture", $imgupload, PDO::PARAM_STR);
         $requete->bindValue(":disc_title", $title, PDO::PARAM_STR);
 
         $requete->execute();
@@ -106,7 +77,7 @@
 
     // a faire
     catch (Exception $e) {
-        echo "titre : ". $title ." /:/ artiste ". $artist ." /:/ year ". $year." /:/ genre ". $genre ." /:/ label ". $label ." /:/ prix". $price." /:/ pochette album = ". $pochalbum . "<br>";
+        echo $title." = titre <br>".$artist." = artiste <br>".$year." = date <br>".$genre." = genre <br>".$label." = label <br>".$price." = prix <br>";
         echo "Erreur : " . $requete->errorInfo()[2] . "<br>";
         die("Fin du script (Non envoyer)");
     }

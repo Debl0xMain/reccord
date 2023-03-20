@@ -44,40 +44,17 @@
 
     //si valeur null = envoi echec
 
-    if ($title == Null || $artist == Null || $year == Null || $genre == Null || $label == Null || $price == Null || $pochalbum == NULL) {
+    if ($title == Null || $artist == Null || $year == Null || $genre == Null || $label == Null || $price == Null) {
         //header("Location: modaledit.php");
-        echo "erreur";
-        echo  " " . $iddisque ." " . $pochalbum . " " . $title ." artiste : " . $artist ." " . $year ." " . $genre ." " . $label ." " . $price;
+        echo "erreur variable";
+        echo $title." = titre <br>".$artist." = artiste <br>".$year." = date <br>".$genre." = genre <br>".$label." = label <br>".$price." = prix <br>";
         exit;
     }
 
-    //Gestion Image 
-    if ($_POST['picture'] != NULL) {
+    //Gestion Image
 
-        $aMimeTypes = array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
-        $finfo = finfo_open(FILEINFO_MIME_TYPE);
-        $mimetype = finfo_file($finfo, $_FILES["picture"]["tmp_name"]);
-        finfo_close($finfo);
-
-        if ($_FILES["fichier"]["error"]=0) {
-
-            if (in_array($mimetype, $aMimeTypes))
-            {
-                move_iddisqueuploaded_file($_FILES["picture"]["tmp_name"], "/src/img/".$pochalbum);
-
-        }
-
-            else 
-            {
-                echo "Type de fichier non autorisé";    
-                exit;
-            }
-        }
-    }
-    else {
-        $picture = $pochalbum;
-    }
-
+    $imgupload = $title.".jpeg"; // definition du nom dans la BDD
+    //include("imgform.php");
 
     //connect
     include("../../../src/php/requestsql/connect.php");
@@ -102,7 +79,7 @@
         $requete->bindValue(":disc_year", $year, PDO::PARAM_INT);
         $requete->bindValue(":disc_genre", $genre, PDO::PARAM_STR);
         $requete->bindValue(":disc_label", $label, PDO::PARAM_STR); 
-        $requete->bindValue(":disc_picture", $picture, PDO::PARAM_STR);
+        $requete->bindValue(":disc_picture", $imgupload, PDO::PARAM_STR); // a renome
         $requete->bindValue(":disc_title", $title, PDO::PARAM_STR);
 
         $requete->execute();
