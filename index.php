@@ -8,14 +8,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
+
     <header>
 
         <?php
         include("./src/php/header.php");
         ?>
-        
-        <form action="/src/php/trie.php" method='POST'>
-            <select name="trie" id="trie" class="form-select">
+    </header>
+   
+    <section>
+
+    <div class="container">
+
+    <form action="/src/php/trie.php" method="post">
+            <select name="trie"  >
                 <option value="triebase" selected hidden>Tri par</option>
                 <option value="artist_az">Artiste A - Z</option>
                 <option value="artist_za">Artiste Z - A</option>
@@ -26,21 +32,17 @@
                 <option value="prix_asc">Prix croissant</option>
                 <option value="prix_desc">Prix décroissant</option>
             </select>
-            <input type="submit" class="btn btn-secondary btn-sm" />
-        </form>
-
-    </header>
-    <!-- affichage disque -->
-    <section>
-    <div class="container">
-
+            <input type="submit" class="btn btn-secondary btn-sm"/>
+    </form>
+                <!--------- affichage disque ----------->
                 <?php include("./src/php/selectdisc.php");
                 ?>                
     </div>
+    </section>
 
     <!-- Script JS -->
-    <section>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    </section>
+
 </body>
 </html>

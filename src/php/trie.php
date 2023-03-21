@@ -1,11 +1,6 @@
 <?php
-
-var_dump($_POST);
-// die;
 //session_destroy();
 session_start();
-
-////ASC A -> Z / DESC Z -> A
 //var_dump($_POST);
 
 
