@@ -1,10 +1,10 @@
 <?php
-
 $db = connexionBase();
 
 $requete = $db->query("SELECT COUNT(*) AS maxint FROM disc");
 $counttable = $requete->fetchAll(PDO::FETCH_OBJ);
 $requete->closeCursor();
+
 foreach ($counttable as $disc):
 
 $nbralbummax = $disc->maxint;
@@ -21,6 +21,14 @@ foreach ($tableau as $disc):
 endforeach;
 $selectalbum = 0;
 $row = 0;
+//trie
+
+include("trie.php");
+if (!isset($_SESSION["trie"])) {
+    $_SESSION["trie"] = "disc.disc_title";
+}
+
+$disquetrie = $_SESSION["trie"];
 
 
 do {
@@ -36,6 +44,7 @@ do {
         SELECT *
         FROM disc
         join artist on disc.artist_id = artist.artist_id
+        order by $disquetrie
         Limit $selectalbum,1
         ");
         $tableau = $requete->fetchAll(PDO::FETCH_OBJ);
