@@ -1,7 +1,10 @@
 <?php
-session_destroy();
+//session_destroy();
 session_start();
-////ASC A -> Z / DESC Z -> A;
+
+////ASC A -> Z / DESC Z -> A
+//var_dump($_POST);
+
 
         if ($_POST['trie'] == "triebase"){
             $_SESSION["trie"] = "disc.disc_id";
@@ -47,4 +50,5 @@ session_start();
             $_SESSION["trie"] = "disc.disc_price DESC";
             header("Location:/index.php");
         }
+
 ?>

@@ -13,12 +13,10 @@
         <?php
         include("./src/php/header.php");
         ?>
-        
+
         <form action="/src/php/trie.php" method='POST'>
-    <div class="mx-5 px-5">
-        <div class="input-group justify-content-end">
-            <select name="trie" class="btn btn btn-outline-secondary btn-sm">
-                <option value="triebase" selected hidden>Trie par</option>
+            <select name="trie" id="trie">
+                <option value="triebase" selected hidden>Tri par</option>
                 <option value="artist_az">Artiste A - Z</option>
                 <option value="artist_za">Artiste Z - A</option>
                 <option value="album_az">Album A - Z</option>
@@ -28,16 +26,14 @@
                 <option value="prix_asc">Prix croissant</option>
                 <option value="prix_desc">Prix décroissant</option>
             </select>
-            <button type="submit" class="btn btn btn-secondary btn-sm">Trie</button>
-        </div>
-    </div>
+            <button type="submit" class="btn btn-secondary btn-sm">Tri</button>
         </form>
+
 
     </header>
     <!-- affichage disque -->
     <section>
     <div class="container">
-
                 <?php include("./src/php/selectdisc.php");
                 ?>                
     </div>

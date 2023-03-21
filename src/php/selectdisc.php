@@ -27,8 +27,8 @@ include("trie.php");
 if (!isset($_SESSION["trie"])) {
     $_SESSION["trie"] = "disc.disc_title";
 }
-
 $disquetrie = $_SESSION["trie"];
+
 
 
 do {
