@@ -1,4 +1,7 @@
 <?php
+
+var_dump($_POST);
+// die;
 //session_destroy();
 session_start();
 

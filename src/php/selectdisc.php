@@ -88,3 +88,7 @@ if ($nbralbummax%2 == 1) {
 }
 
 ?>
+
+<hr>
+<?= $disquetrie ?>
+<hr>

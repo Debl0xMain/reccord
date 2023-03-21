@@ -13,9 +13,9 @@
         <?php
         include("./src/php/header.php");
         ?>
-
+        
         <form action="/src/php/trie.php" method='POST'>
-            <select name="trie" id="trie">
+            <select name="trie" id="trie" class="form-select">
                 <option value="triebase" selected hidden>Tri par</option>
                 <option value="artist_az">Artiste A - Z</option>
                 <option value="artist_za">Artiste Z - A</option>
@@ -26,14 +26,14 @@
                 <option value="prix_asc">Prix croissant</option>
                 <option value="prix_desc">Prix décroissant</option>
             </select>
-            <button type="submit" class="btn btn-secondary btn-sm">Tri</button>
+            <input type="submit" class="btn btn-secondary btn-sm" />
         </form>
-
 
     </header>
     <!-- affichage disque -->
     <section>
     <div class="container">
+
                 <?php include("./src/php/selectdisc.php");
                 ?>                
     </div>
