@@ -18,12 +18,12 @@
    
     <section>
 
-    <div class="container mx-auto">
+<div class="container mx-auto">
 
 
 <form action="/src/php/trie.php" method="post">
-<div class="input-group justify-content-end">
-    <select name="trie" class="btn btn-secondary">
+<div class="input-group d-flex justify-content-end mr-5 ">
+    <select name="trie" class="btn btn-primary btn-sm text-light">
         <option value="triebase" selected hidden>Tri par</option>
         <option value="artist_az">Artiste A - Z</option>
         <option value="artist_za">Artiste Z - A</option>
@@ -34,7 +34,7 @@
         <option value="prix_asc">Prix croissant</option>
         <option value="prix_desc">Prix décroissant</option>
     </select>
-    <input type="submit" class="btn btn-secondary btn-sm rounded"/>
+    <input type="submit" class="btn btn-primary btn-sm text-light rounded"/>
     </div>
 </form>
 
