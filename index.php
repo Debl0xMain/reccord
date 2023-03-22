@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="./src/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    
 </head>
 <body>
@@ -22,8 +23,7 @@
 
 
 <form action="/src/php/trie.php" method="post">
-<div class="input-group d-flex justify-content-end mr-5 ">
-    <select name="trie" class="btn btn-primary btn-sm text-light">
+    <select name="trie" class="btn btn-primary btn-sm text-light reveal-3 ">
         <option value="triebase" selected hidden>Tri par</option>
         <option value="artist_az">Artiste A - Z</option>
         <option value="artist_za">Artiste Z - A</option>
@@ -34,8 +34,7 @@
         <option value="prix_asc">Prix croissant</option>
         <option value="prix_desc">Prix décroissant</option>
     </select>
-    <input type="submit" class="btn btn-primary btn-sm text-light rounded"/>
-    </div>
+    <input type="submit" class="btn btn-primary btn-sm text-light rounded reveal-2"/>
 </form>
 
 

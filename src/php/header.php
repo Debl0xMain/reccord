@@ -15,7 +15,7 @@ $requete->closeCursor();
     <?php
 $idadd = $disc->maxint;
 echo
-        '<div class="container d-inline-flex">
+        '<div class="container d-inline-flex reveal-1">
             <div class="mx-auto d-inline-flex">
                 <h1>Liste des disque</h1>'.
                     '<div class="nbrdisque"><p>('. $disc->maxint.')</p>

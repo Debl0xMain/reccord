@@ -21,6 +21,7 @@ foreach ($tableau as $disc):
 endforeach;
 $selectalbum = 0;
 $row = 0;
+$revealcount = 0;
 //trie
 
 include("trie.php");
