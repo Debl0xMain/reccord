@@ -7,9 +7,10 @@
         FROM artist
         ORDER BY artist_id DESC
         LIMIT 0,1");
-    $artiste = $requete->fetchAll(PDO::FETCH_OBJ);
+    $tableau = $requete->fetchAll(PDO::FETCH_OBJ);
     $requete->closeCursor();
 
+    foreach ($tableau as $artiste);
     $selectartiste = 0;
     $artistmmax = $artiste->artist_id;
 
@@ -21,8 +22,9 @@ do {
     ORDER BY artist_id
     Limit $selectartiste ,1
     ");
-    $artiste = $requete->fetchAll(PDO::FETCH_OBJ);
+    $tableau = $requete->fetchAll(PDO::FETCH_OBJ);
     $requete->closeCursor();
+    foreach ($tableau as $artiste);
 
     $id_artist = $artiste->artist_id;
     $name_artist= $artiste->artist_name;;
