@@ -5,13 +5,12 @@ $db = connexionBase();
 
 $requete = $db->query("
     SELECT COUNT(*) AS maxint FROM disc");
-$tableau = $requete->fetchAll(PDO::FETCH_OBJ);
+$disc = $requete->fetchAll(PDO::FETCH_OBJ);
 $requete->closeCursor();
 
 
 ?>
-    <?php foreach ($tableau as $disc): ?>
-    <?php endforeach; ?>
+
     <?php
 $idadd = $disc->maxint;
 echo
