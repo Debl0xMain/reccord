@@ -1,0 +1,133 @@
+@font-face {
+    font-family: Yellowginger;
+    src: url(../font/Yellow\ Ginger.ttf);
+}
+/* size logo The District Nav et footer */
+.navlogo {
+    height: 70px;
+    width: 150px;
+}
+/* size logo footer */
+.logo {
+    height: 32px;
+    width: 32px;
+}
+/* background navbar and footer navbar  */
+.bg-nav ul {
+    background-color: #9e0e4062;
+    backdrop-filter: blur(5px);
+    border-radius: 50px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.384);
+}
+.bg-nav li {
+    font-family: "yellowginger";
+    font-size: 1.25rem;
+}
+/* background */
+.background {
+    position: absolute !important;
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    z-index: -15 !important;
+}
+/* color nav and footer text */
+.navtext {
+    text-decoration: none;
+    color: white !important;
+    text-shadow: 2px 2px 2px black;
+}
+
+.colorlogofooter {
+    color:  white !important;
+}
+
+.navtext:hover {
+    color: white!important;
+    text-shadow: 2px 2px 2px #ce1053;
+}
+
+/* btn login */
+
+.btnlogin {
+    right: 0;
+}
+
+/* logo menu burger */
+.logomin {
+    height: 80px;
+    width: 80px;
+}
+
+.logomin:hover {
+    box-shadow: 2px 2px 2px  #ce1053;
+    border-radius: 75px;
+    color: red !important;
+}
+
+.navbar-toggler {
+    border: none !important;
+    box-sizing: none !important;
+    color: rgba(255, 0, 0, 0) !important;
+    background-color: rgba(255, 0, 0, 0);
+}
+@keyframes revealAnimationtop {
+    0% {
+    opacity: 0;
+    transform: translateY(-30px);
+    }
+    100% {
+    opacity: 1;
+    transform: translateY(0px);
+    }
+}
+.reveal-top {
+    animation: revealAnimationtop 3s cubic-bezier(.5, 0, 0, 1) both;
+}
+@keyframes revealAnimationbot {
+    0% {
+    opacity: 0;
+    transform: translateY(30px);
+    }
+    100% {
+    opacity: 1;
+    transform: translateY(0px);
+    }
+}
+.reveal-bot {
+    animation: revealAnimationbot 3s cubic-bezier(.5, 0, 0, 1) both;
+}
+
+@keyframes revealAnimationright {
+    0% {
+    opacity: 0;
+    transform: translateX(-30px);
+    }
+    100% {
+    opacity: 1;
+    transform: translatex(0px);
+    }
+}
+.reveal-right {
+    animation: revealAnimationright 3s cubic-bezier(.5, 0, 0, 1) both;
+}
+@keyframes revealAnimationleft {
+    0% {
+    opacity: 0;
+    transform: translateX(30px);
+    }
+    100% {
+    opacity: 1;
+    transform: translatex(0px);
+    }
+}
+.reveal-left {
+    animation: revealAnimationleft 3s cubic-bezier(.5, 0, 0, 1) both;
+}
+
+
